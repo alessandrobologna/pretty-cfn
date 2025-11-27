@@ -1,0 +1,23 @@
+type Task {
+  id: ID!
+  title: String!
+  description: String
+  completed: Boolean!
+  createdAt: AWSDateTime!
+}
+
+type Query {
+  getTask(id: ID!): Task
+  listTasks: [Task!]!
+}
+
+type Mutation {
+  createTask(title: String!, description: String): Task!
+  updateTask(id: ID!, title: String, description: String, completed: Boolean): Task!
+  deleteTask(id: ID!): Task
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

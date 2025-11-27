@@ -1,0 +1,9 @@
+.venv/
+.vscode/
+*.egg-info/
+__pycache__/
+node_modules/
+build/
+dist/
+cdk.out/
+.coverage
