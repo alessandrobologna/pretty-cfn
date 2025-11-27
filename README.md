@@ -1,4 +1,4 @@
-# Pretty CFN
+# Pretty CFN (ConFusiNg)
 
 Pretty CFN is a small, CDK-aware CloudFormation formatter. It formats CloudFormation/SAM templates, can
 clean up CDK output, and can also pull and refactor deployed stacks. It ships as a simple CLI and a
@@ -10,11 +10,11 @@ FastMCP server so the same pipeline can power terminals and editors.
 - **CDK Cleaner**: Recovers human-readable names from `cdk.out` metadata and removes bootstrap noise.
 - **Stack Import**: Fetches deployed stacks (`--stack-name`) directly into your repo.
 - **SAM Refactoring**: Converts CDK stacks to SAM projects (`--target sam-app`) with support for Lambda assets, API Gateway, Step Functions, AppSync, and common event sources.
-- **Flexible I/O**: Works on stdin, files, directories, or live stacks.
+- **Flexible Sources**: Works on stdin, files, directories, or live stacks.
 - **MCP Support**: Exposes formatting and refactoring tools to editors and AI agents.
 
 
-> [!WARN]
+> [!WARNING]
 > SAM conversion (`refactor --target sam-app`) is **destructive** and intended for migrating legacy/unmaintained stacks. Do not run it against a live production stack without a full validation/deployment plan. 
 
 ## Installation
@@ -50,10 +50,7 @@ To format a local template and print to stdout:
 pretty-cfn format --input template.yaml
 ```
 
-
 There are two main commands: `pretty-cfn format` (formatting) and `pretty-cfn refactor` (CDK cleaning and SAM conversion).
-
-
 
 
 | Goal | Command |
@@ -163,8 +160,6 @@ Use the `refactor` command for structural changes.
 - `--plan path.json`: Writes a JSON manifest describing the refactor operations.
 - `--prefer-external`: (With `sam-app`) Spills inline assets to files.
 - `--ignore-errors`: Allows writing output even when cfn-lint errors are present (for `--overwrite` and `--target sam-app`).
-
-> **Note:** Fine-grained control over CDK options (like collision strategies or explicit rename maps) is currently available via the MCP interface but not the CLI flags.
 
 ## MCP Server
 
