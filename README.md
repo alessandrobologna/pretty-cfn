@@ -1,3 +1,5 @@
+<img width="1500" height="993" alt="pretty-cfn" src="https://github.com/user-attachments/assets/4957bd9b-ecec-46c6-9c1d-302fe3eb87ad" />
+
 # Pretty CFN (ConFusiNg)
 
 Pretty CFN is a small, CDK-aware CloudFormation formatter. It formats CloudFormation/SAM templates, can
