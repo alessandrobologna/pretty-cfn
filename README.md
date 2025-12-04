@@ -1,6 +1,6 @@
 <img width="1465" height="1059" alt="Pretty CFN screenshot" src="https://github.com/user-attachments/assets/be0fb972-307b-40a6-b955-7346dd290132" />
 
-# Pretty CFN (ConFusiNg)
+# `pretty-cfn`
 
 Pretty CFN is a small, CDK-aware CloudFormation formatter. It formats CloudFormation/SAM templates, can
 clean up CDK output, and can also pull and refactor deployed stacks. It ships as a simple CLI and a
@@ -206,10 +206,10 @@ The project is organised around a single processing pipeline with a few focused 
 flowchart TD
     CLI["CLI (pretty-cfn format / refactor)"]
     MCP["MCP Server (pretty-cfn mcp)"]
-    SERVICE["service.process_template\n(core pipeline)"]
-    FORMATTER["formatter / formatter_intrinsics / formatter_layout\n(format CFN/SAM)"]
-    SAMIFIER["samifier/*\n(CDK → clean CFN / SAM)"]
-    LINT["cfn-lint\n(validation)"]
+    SERVICE["service.process_template (core pipeline)"]
+    FORMATTER["formatter / formatter_intrinsics / formatter_layout (format CFN/SAM)"]
+    SAMIFIER["samifier/* (CDK → clean CFN / SAM)"]
+    LINT["cfn-lint (validation)"]
 
     CLI --> SERVICE
     MCP --> SERVICE
