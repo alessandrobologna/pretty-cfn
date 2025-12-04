@@ -1,4 +1,4 @@
-<img width="1500" height="993" alt="pretty-cfn" src="https://github.com/user-attachments/assets/4957bd9b-ecec-46c6-9c1d-302fe3eb87ad" />
+<img width="1500" height="993" alt="Pretty CFN screenshot" src="https://github.com/user-attachments/assets/00034eaf-251b-4846-90ed-f778ed3fc1da" />
 
 # Pretty CFN (ConFusiNg)
 
