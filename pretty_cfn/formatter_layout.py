@@ -257,7 +257,7 @@ def _align_block_literals(lines: List[str], alignment_column: int) -> List[str]:
         value_part = None
         if ":" in line:
             value_part = line.split(":", 1)[1].strip()
-        if value_part and value_part.startswith("|"):
+        if value_part and (value_part.startswith("|") or value_part.startswith(">")):
             base_indent = len(line) - len(line.lstrip(" "))
             target_base = max(alignment_column, base_indent + 2)
             block_lines: List[str] = []

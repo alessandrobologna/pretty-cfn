@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import ruamel.yaml
 from ruamel.yaml import YAML
 from ruamel.yaml.comments import CommentedMap, CommentedSeq
-from ruamel.yaml.scalarstring import LiteralScalarString
+from ruamel.yaml.scalarstring import FoldedScalarString, LiteralScalarString, ScalarString
 
 
 # CloudFormation intrinsic function tags
@@ -175,7 +175,7 @@ def _needs_quotes(s: str) -> bool:
     return False
 
 
-def create_cfn_yaml(*, preserve_quotes: bool = False, width: int = 200) -> YAML:
+def create_cfn_yaml(*, preserve_quotes: bool = False, width: int = 4096) -> YAML:
     """Create a configured ruamel.yaml instance for CloudFormation templates."""
     yaml = YAML()
     yaml.preserve_quotes = preserve_quotes
@@ -775,8 +775,9 @@ def _substitute_placeholders(node: Any, placeholder_map: PlaceholderMap) -> Any:
 
 
 def _mark_literal_blocks(node: Any) -> None:
-    """Recursively convert multiline strings to LiteralStr for block style output."""
-    if isinstance(node, LiteralStr):
+    """Recursively convert multiline strings to block style output, preserving folded vs literal."""
+    if isinstance(node, ScalarString):
+        # Already a scalar string type (LiteralScalarString, FoldedScalarString, etc.)
         return
     if isinstance(node, CFNTag):
         _mark_literal_blocks(node.value)
@@ -789,8 +790,9 @@ def _mark_literal_blocks(node: Any) -> None:
         return
     if isinstance(node, (dict, OrderedDict, CommentedMap)):
         for key, value in list(node.items()):
-            # Convert ALL multiline strings to literal block style
-            if isinstance(value, str) and "\n" in value and not isinstance(value, LiteralStr):
+            # Convert plain multiline strings to literal block style,
+            # but preserve existing FoldedScalarString or LiteralScalarString
+            if isinstance(value, str) and "\n" in value and not isinstance(value, ScalarString):
                 node[key] = LiteralStr(value)
             else:
                 _mark_literal_blocks(value)
