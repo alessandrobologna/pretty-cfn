@@ -12,7 +12,7 @@ dependencies = [
     "ruamel.yaml>=0.18.0",
     "click>=8.3.1",
     "pygments>=2.16.0",
-    "cfn-lint>=1.41.0",
+    "cfn-lint>=1.42.1",
     "boto3>=1.41.0",
     "fastmcp>=2.13.1",
 ]

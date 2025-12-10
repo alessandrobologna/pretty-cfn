@@ -47,8 +47,8 @@ Resources:
       BucketName:                       sample-event-bucket
       NotificationConfiguration:
         LambdaConfigurations:
-          - Event: s3:ObjectCreated:*
-            Function: !GetAtt LambdaFunction.Arn
+          - Event:                      s3:ObjectCreated:*
+            Function:                   !GetAtt LambdaFunction.Arn
 
   ##
   ## BucketInvokePermission
@@ -98,8 +98,8 @@ Resources:
       SelfManagedEventSource:
         Endpoints:
           KafkaBootstrapServers:
-            - b-1.kafka.example.com:9092
-            - b-2.kafka.example.com:9092
+            -                           b-1.kafka.example.com:9092
+            -                           b-2.kafka.example.com:9092
       Topics:
         -                               orders
       BatchSize:                        10

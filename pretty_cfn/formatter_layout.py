@@ -161,10 +161,13 @@ def _align_values(lines: List[str], alignment_column: int) -> List[str]:
         indent = len(line) - len(stripped)
 
         # If we are inside a literal block, keep indentation untouched
-        if literal_block_indent is not None and indent > literal_block_indent:
-            aligned_lines.append(line)
-            i += 1
-            continue
+        if literal_block_indent is not None:
+            if indent > literal_block_indent:
+                aligned_lines.append(line)
+                i += 1
+                continue
+            # We've exited the literal block (indent <= literal_block_indent)
+            literal_block_indent = None
 
         if ":" in stripped and not stripped.startswith("- "):
             colon_idx = _find_kv_colon_idx(stripped)

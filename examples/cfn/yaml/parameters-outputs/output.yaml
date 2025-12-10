@@ -153,14 +153,14 @@ Resources:
                                             return {"statusCode": 200}
       Environment:
         Variables:
-          DB_PASSWORD: !Ref DBPassword
-          ALARM_EMAIL: !Ref AlarmEmail
-          BACKUP_RETENTION_DAYS: !Sub ${BackupRetention}
-          ENABLE_MONITORING: !Ref EnableMonitoring
-          TAG_KEYS: !Join
-            - ','
-            - !Ref TagList
-          CONFIG_PARAM: !Ref SSMParameter
+          DB_PASSWORD:                  !Ref DBPassword
+          ALARM_EMAIL:                  !Ref AlarmEmail
+          BACKUP_RETENTION_DAYS:        !Sub ${BackupRetention}
+          ENABLE_MONITORING:            !Ref EnableMonitoring
+          TAG_KEYS:                     !Join
+            -                           ','
+            -                           !Ref TagList
+          CONFIG_PARAM:                 !Ref SSMParameter
 
 
 Outputs:
